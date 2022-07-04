@@ -7,13 +7,19 @@ const Home = () => {
         {title: 'Welcome Party', body: 'lorem ipsum...', author: 'yoshi', id: 2},
         {title: 'Web dev top tips', body: 'lorem ipsum...', author: 'mario', id: 3},
     ]);
+
+    const handleDelete = (id) => {
+        const newBlogs = blogs.filter(blog => blog.id !== id);
+        setBlogs(newBlogs);
+    }
+
     return (
         <div className="homePage">
-            < BlogList blogs={blogs} title="All Blogs!" />
-            {/* Here we are filtering blogs with author as just mario */}
-            <BlogList blogs={blogs.filter((blog) => blog.author === 'mario')} title="mario's blogs"/>
+            < BlogList blogs={blogs} title="All Blogs!" handleDelete = {handleDelete}/>
         </div>
     );
+
+
 }
  
 export default Home;

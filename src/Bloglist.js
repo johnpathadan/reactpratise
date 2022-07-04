@@ -1,8 +1,4 @@
-const BlogList = ({blogs, title}) => {
-    //shortcut applied
-    // const blogs = props.blogs; //we are now importing blogs to Bloglist.js 
-    // const title = props.title;
-    // console.log(props, blogs);
+const BlogList = ({blogs, title, handleDelete}) => {
 
     return ( 
         <div className="blog-list">
@@ -13,6 +9,7 @@ const BlogList = ({blogs, title}) => {
                     
                     <h2>{blog.title}</h2>
                     <p>Written by {blog.author}</p>
+                    <button onClick={()=> handleDelete(blog.id)}>Delete Blog</button> 
                 </div>
             ))}
         </div>
