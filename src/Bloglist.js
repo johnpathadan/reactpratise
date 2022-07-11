@@ -1,4 +1,4 @@
-const BlogList = ({blogs, title}) => { //handle delete deleted
+const BlogList = ({blogs, title}) => { 
 
     return ( 
         <div className="blog-list">
