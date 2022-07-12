@@ -5,7 +5,7 @@ import useFetch from "./useFetch";
 
 const Home = () => {
   
-    const{data:blogs, isPending, error} = useFetch('http://localhost:8000/blogs');
+    const { error, isPending, data: blogs } = useFetch('http://localhost:8000/blogs')
     //This means take the data, call it blogs in this context
 
   
