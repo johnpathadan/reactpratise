@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react"; we dont need this line anymore
 import BlogList from "./Bloglist";
 import useFetch from "./useFetch";
 
