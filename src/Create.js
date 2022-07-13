@@ -1,22 +1,27 @@
 import { useState } from "react";
 
 const Create = () => {
-    // whenever the user inputs a value, we need to track and store it in some state inside
+    
     const[title, setTitle] = useState('');
-    //in the above code, we need to associate the value to the value of the input
+    
     const[body, setBody] = useState('');
     const[author, setAuthor] = useState('mario');
+    const handleSubmit = (e)=>{  // function created, e is the event
+        e.preventDefault(); //to avoid the page auto refreshing when you press Add Blog button
+        const blog = {title, body, author}; //this will be passed to db.json, NOTE: no id required as
+        //json file automatically creates id
+    }
     return (
         <div className="create">
             <h2>Add a New Blog</h2>
-            <form>
+            {/* onSubmit added to the form */}
+            <form onSubmit={handleSubmit}>
                 <label>Blog title:</label>
                 <input 
                     type="text"
                     required
-                    value = {title} //associating the value to the value of the input
-                    onChange={(e)=> setTitle(e.target.value)}//Whenever a change happens, setState needs to be trigerred
-                    //in the above code, e is the event, target s the entire input code, value is what the user typed in
+                    value = {title} 
+                    onChange={(e)=> setTitle(e.target.value)}
                     />
                     <label>Blog body:</label>
                     <textarea
@@ -36,7 +41,7 @@ const Create = () => {
                     </select>
                     <button>Add Blog</button>
                     <p>{title}</p> 
-                    {/* this is to see the live updates */}
+                    
                     <p>{body}</p>
                     <p>{author}</p>
             </form>
