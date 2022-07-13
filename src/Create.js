@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from 'react-router-dom'; //added code
+import { useHistory } from 'react-router-dom'; 
 
 const Create = () => {
     
@@ -8,7 +8,7 @@ const Create = () => {
     const[body, setBody] = useState('');
     const[author, setAuthor] = useState('mario');
     const[isPending, setIsPending] = useState(false); 
-    const history = useHistory(); //added code, go back and forth or redirect the user
+    const history = useHistory(); 
 
     const handleSubmit = (e)=>{  
         e.preventDefault(); 
@@ -24,9 +24,7 @@ const Create = () => {
         }).then(()=>{
             console.log('New Blog added');
             setIsPending(false);
-            //history.go(-1); //go back 1 page in history
-            //here we are redirecting the user back to homepage
-            
+            history.push('/'); 
         }); 
     }
     return (
