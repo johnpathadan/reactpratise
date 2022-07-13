@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from 'react-router-dom'; //added code
 
 const Create = () => {
     
@@ -6,8 +7,8 @@ const Create = () => {
     
     const[body, setBody] = useState('');
     const[author, setAuthor] = useState('mario');
-    const[isPending, setIsPending] = useState(false); //to make a loading object after sending the blod data to JSON
-
+    const[isPending, setIsPending] = useState(false); 
+    const history = useHistory(); //added code, go back and forth or redirect the user
 
     const handleSubmit = (e)=>{  
         e.preventDefault(); 
@@ -15,14 +16,17 @@ const Create = () => {
 
         setIsPending(true);
 
-        fetch('http://localhost:8000/blogs', {  //added code
+        fetch('http://localhost:8000/blogs', {  
             method: 'POST',
-            headers: {"Content-Type": "application/json"}, //to provide the data type(here JSON data)
-            body: JSON.stringify(blog) //to make the body string
-            //JSON will automatically add an id
+            headers: {"Content-Type": "application/json"}, 
+            body: JSON.stringify(blog) 
+            
         }).then(()=>{
             console.log('New Blog added');
             setIsPending(false);
+            //history.go(-1); //go back 1 page in history
+            //here we are redirecting the user back to homepage
+            
         }); 
     }
     return (
@@ -52,8 +56,7 @@ const Create = () => {
                         <option value="mario">mario</option>
                         <option value="yoshi">yoshi</option>
                     </select>
-                    {/* under, we need to add one button if isPending is false, that is the Add
-                    Blog button, and a different one, if isPending is true */}
+                   
                     {!isPending && <button>Add Blog</button>}
                     {isPending && <button disabled>Adding Blog...</button>}
                     <p>{title}</p> 
